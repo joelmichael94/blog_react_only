@@ -20,9 +20,15 @@ function App() {
         return data;
     };
 
-    let showPosts = JSON.parse(localStorage.getItem("posts"))
-        .map((post) => <Post key={post.id} data={post} getPosts={getPosts} />)
-        .reverse();
+    let showPosts = !localStorage.getItem("posts") ? (
+        <h2>No Posts to Show</h2>
+    ) : (
+        JSON.parse(localStorage.getItem("posts"))
+            .map((post) => (
+                <Post key={post.id} data={post} getPosts={getPosts} />
+            ))
+            .reverse()
+    );
 
     let addPosts = <AddPost getPosts={getPosts} />;
 
