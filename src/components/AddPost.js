@@ -25,7 +25,7 @@ function AddPost({ getPosts }) {
     };
 
     return (
-        <div className="flex w-full component-preview p-4 items-center justify-center gap-2 font-sans">
+        <div className="sm:flex w-full component-preview p-4 items-center justify-center gap-2 font-sans">
             <div className="form-control">
                 <form
                     onSubmit={onSubmitHandler}
@@ -36,7 +36,7 @@ function AddPost({ getPosts }) {
                         name="title"
                         onChange={onChangeHandler}
                         value={post.title}
-                        className="w-72"
+                        className="mb-5 w-full sm:w-72 sm:mb-0"
                         placeholder="Title"
                     />
                     <Input
@@ -44,7 +44,7 @@ function AddPost({ getPosts }) {
                         name="body"
                         onChange={onChangeHandler}
                         value={post.body}
-                        className="w-72"
+                        className="mb-5 w-full sm:w-72 sm:mb-0"
                         placeholder="Body"
                     />
                     <Button className="bg-blue-500 border-0">Add Post</Button>
@@ -53,4 +53,5 @@ function AddPost({ getPosts }) {
         </div>
     );
 }
+
 export default AddPost;

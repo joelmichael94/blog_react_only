@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Post from "./components/Post";
-import Navbar from "./components/partials/Navbar";
+import Nav from "./components/partials/Nav";
 import AddPost from "./components/AddPost";
 
 function App() {
     const [posts, setPosts] = useState(
         JSON.parse(localStorage.getItem("posts")) || []
     );
+    const [post, setPost] = useState();
 
     const getPosts = async () => {
         let url = await fetch("https://jsonplaceholder.typicode.com/posts");
@@ -39,11 +40,11 @@ function App() {
     return (
         <>
             <div>
-                <Navbar />
+                <Nav />
                 <div>{addPosts}</div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 m-4 gap-4">
+                <ol className="grid grid-cols-1 sm:grid-cols-2 m-4 gap-4 list-decimal">
                     {showPosts}
-                </div>
+                </ol>
             </div>
         </>
     );

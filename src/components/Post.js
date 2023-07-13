@@ -30,77 +30,82 @@ function Post({ data, getPosts }) {
     };
 
     return (
-        <Card className="shadow-lg shadow-slate-400">
-            <Card.Body>
-                <Card.Title tag="h2">{post.title}</Card.Title>
-                <p>{post.body}</p>
-                <Card.Actions className="justify-end">
-                    <Button
-                        className="bg-blue-500 border-0"
-                        onClick={() => setVisible(!visible)}
-                    >
-                        Edit
-                    </Button>
-                    <Modal open={visible} className="bg-slate-100">
-                        <Modal.Header className="font-bold flex justify-center items-center text-2xl mt-5">
-                            Editing ...
-                        </Modal.Header>
-                        <Modal.Body>
-                            <div className="flex w-full component-preview p-4 items-center justify-center gap-2 font-sans">
-                                <div className="form-control">
-                                    <form onSubmit={onSubmitHandler}>
-                                        <label className="label font-bold italic">
-                                            Title
-                                        </label>
-                                        <Input
-                                            type="text"
-                                            name="title"
-                                            onChange={onChangeHandler}
-                                            value={post.title}
-                                            className="w-72 mb-10"
-                                            placeholder="Title"
-                                        />
+        <li key={post.id} className="list-outside">
+            <Card className="shadow-lg shadow-slate-400">
+                <Card.Body>
+                    <Card.Title tag="h2">{post.title}</Card.Title>
+                    <p>{post.body}</p>
+                    <Card.Actions className="justify-end">
+                        <Button
+                            className="bg-blue-500 border-0"
+                            onClick={() => setVisible(!visible)}
+                        >
+                            Edit
+                        </Button>
+                        <Modal open={visible} className="bg-slate-100">
+                            <Modal.Header className="font-bold flex justify-center items-center text-2xl mt-5">
+                                Editing ...
+                            </Modal.Header>
+                            <Modal.Body>
+                                <div className="flex w-full component-preview p-4 items-center justify-center gap-2 font-sans">
+                                    <div className="form-control">
+                                        <form onSubmit={onSubmitHandler}>
+                                            <label className="label font-bold italic">
+                                                Title
+                                            </label>
+                                            <Input
+                                                type="text"
+                                                name="title"
+                                                onChange={onChangeHandler}
+                                                value={post.title}
+                                                className="w-72 mb-10"
+                                                placeholder="Title"
+                                            />
 
-                                        <label className="label font-bold italic">
-                                            Body
-                                        </label>
-                                        <Input
-                                            type="text"
-                                            name="body"
-                                            onChange={onChangeHandler}
-                                            value={post.body}
-                                            className="w-72"
-                                            placeholder="Body"
-                                        />
-                                        <div className="flex justify-center mt-14">
-                                            <Button className="w-36" size="sm">
-                                                Confirm Edit
-                                            </Button>
-                                        </div>
-                                    </form>
+                                            <label className="label font-bold italic">
+                                                Body
+                                            </label>
+                                            <Input
+                                                type="text"
+                                                name="body"
+                                                onChange={onChangeHandler}
+                                                value={post.body}
+                                                className="w-72"
+                                                placeholder="Body"
+                                            />
+                                            <div className="flex justify-center mt-14">
+                                                <Button
+                                                    className="w-36"
+                                                    size="sm"
+                                                >
+                                                    Confirm Edit
+                                                </Button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
-                        </Modal.Body>
-                        <Modal.Actions>
-                            <Button
-                                size="sm"
-                                shape="circle"
-                                className="absolute right-2 top-2"
-                                onClick={() => setVisible(!visible)}
-                            >
-                                ✕
-                            </Button>
-                        </Modal.Actions>
-                    </Modal>
-                    <Button
-                        className="bg-red-500 border-0"
-                        onClick={() => deletePost(post.id)}
-                    >
-                        Delete
-                    </Button>
-                </Card.Actions>
-            </Card.Body>
-        </Card>
+                            </Modal.Body>
+                            <Modal.Actions>
+                                <Button
+                                    size="sm"
+                                    shape="circle"
+                                    className="absolute right-2 top-2"
+                                    onClick={() => setVisible(!visible)}
+                                >
+                                    ✕
+                                </Button>
+                            </Modal.Actions>
+                        </Modal>
+                        <Button
+                            className="bg-red-500 border-0"
+                            onClick={() => deletePost(post.id)}
+                        >
+                            Delete
+                        </Button>
+                    </Card.Actions>
+                </Card.Body>
+            </Card>
+        </li>
     );
 }
 export default Post;
